@@ -18,6 +18,13 @@ The profile includes a tagline, which is a quote by the users favorite character
 * Create a mock for `futuramaApi.js`
   * Create a unique mocked quote for each possible `favoriteCharacter`
 
+## Middleware
+
+* Error handling middleware
+* Not found middleware
+* **NOTE** You will **NOT** need middleware to get a futurama quote.
+  Handle getting a futurama quote within your route handler
+
 ## Routes
 
 * POST `/profile`
