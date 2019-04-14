@@ -1,0 +1,27 @@
+{
+  "name": "mob-futurama-profile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alchemy-fullstack-js-spring-2019/mob-futurama-profile.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alchemy-fullstack-js-spring-2019/mob-futurama-profile/issues"
+  },
+  "homepage": "https://github.com/alchemy-fullstack-js-spring-2019/mob-futurama-profile#readme",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "uuid": "^3.3.2"
+  }
+}
