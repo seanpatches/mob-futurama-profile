@@ -4,6 +4,10 @@ const app = require('../lib/app');
 const superagent = require('superagent');
 
 describe('futurama profile maker', () => {
+  beforeEach(() => {
+    return Profile.drop();
+  });
+
   it('creates profile with Post', () => {
     
     return request(app)
@@ -22,5 +26,19 @@ describe('futurama profile maker', () => {
           _id: expect.any(String)
         });
       });
+  });
+
+  it('gets list of all profiles', () => {
+    Profile
+      .create({ name: 'dave' })
+      .then(() => {
+        return request(app)
+          .get('/')
+          .then(result => {
+            expect(result.body).toHaveLength(1);
+          });
+      });
+    
+      
   });
 });
