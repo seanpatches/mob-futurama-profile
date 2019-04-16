@@ -58,23 +58,36 @@ describe('futurama profile maker', () => {
           });
       });
   });
-  // it('updates a profile', () => {
-  //   return Profile
-  //     .create({
-  //       name: 'sean',
-  //       favoriteCharacter: 'Leela',
-  //       tagline: 'Hi'
-  //     })
-  //     .then(created => {
-  //       return request(app)
-  //         .patch(`/profiles/${created._id}`)
-  //         .send({
-  //           favoriteCharacter: 'Bender',
-  //         })
-  //         .then(newObj => {
-  //           console.log(newObj.body);
-  //           expect(newObj.body).toEqual('dod');
-  //         });
-  //     });
-  // });
+
+  it('updates a profile', () => {
+    return request(app)
+      .post('/profiles')
+      .send({ name: 'sean', favoriteCharacter: 'Leela' })
+      .then(original => {
+        return request(app)
+          .patch(`/profiles/${original.body._id}`)
+          .send({ favoriteCharacter: 'Bender' });
+      })
+      .then(result => {
+        expect(result.body).toEqual({
+          name: 'sean',
+          favoriteCharacter: 'Bender',
+          tagline: expect.any(String),
+          _id: expect.any(String)
+        });
+      });
+  });
+
+  it('deletes a profile', () => {
+    return request(app)
+      .post('/profiles')
+      .send({ name: 'sean', favoriteCharacter: 'Fry' })
+      .then(original => {
+        return request(app)
+          .delete(`/profiles/${original.body._id}`);
+      })
+      .then(result => {
+        expect(result.body).toEqual({ deleted: 1 });
+      });
+  });
 });
