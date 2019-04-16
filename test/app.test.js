@@ -17,7 +17,6 @@ describe('futurama profile maker', () => {
         favoriteCharacter: 'bender'
       })
       .then(result => {
-        console.log(result.body)
         expect(result.body).toEqual({
           name: 'dave',
           favoriteCharacter: 'bender',
@@ -59,4 +58,23 @@ describe('futurama profile maker', () => {
           });
       });
   });
+  // it('updates a profile', () => {
+  //   return Profile
+  //     .create({
+  //       name: 'sean',
+  //       favoriteCharacter: 'Leela',
+  //       tagline: 'Hi'
+  //     })
+  //     .then(created => {
+  //       return request(app)
+  //         .patch(`/profiles/${created._id}`)
+  //         .send({
+  //           favoriteCharacter: 'Bender',
+  //         })
+  //         .then(newObj => {
+  //           console.log(newObj.body);
+  //           expect(newObj.body).toEqual('dod');
+  //         });
+  //     });
+  // });
 });
