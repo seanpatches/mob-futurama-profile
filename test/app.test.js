@@ -1,7 +1,6 @@
 const Profile = require('../lib/models/Profile');
 const request = require('supertest');
 const app = require('../lib/app');
-const superagent = require('superagent');
 
 describe('futurama profile maker', () => {
   beforeEach(() => {
