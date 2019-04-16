@@ -14,8 +14,7 @@ describe('futurama profile maker', () => {
       .post('/profiles')
       .send({
         name: 'dave',
-        favoriteCharacter: 'bender',
-        tagline: 'Hi I am bender'
+        favoriteCharacter: 'bender'
       })
       .then(result => {
         console.log(result.body)
@@ -33,12 +32,31 @@ describe('futurama profile maker', () => {
       .create({ name: 'dave' })
       .then(() => {
         return request(app)
-          .get('/')
+          .get('/profiles')
           .then(result => {
             expect(result.body).toHaveLength(1);
           });
       });
-    
-      
+  });
+
+  it('gets a prof by id', () => {
+    return Profile
+      .create({
+        name: 'sean',
+        favoriteCharacter: 'Leela',
+        tagline: 'Hi'
+      })
+      .then(created => {
+        return request(app)
+          .get(`/profiles/${created._id}`)
+          .then(result => {
+            expect(result.body).toEqual({
+              name: 'sean',
+              favoriteCharacter: 'Leela',
+              tagline: expect.any(String),
+              _id: expect.any(String)
+            });
+          });
+      });
   });
 });
